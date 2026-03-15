@@ -15,3 +15,18 @@
         @Body
     </main>
 </div>
+
+
+@inject NavigationManager NavManager
+
+@code {
+    protected override void OnInitialized()
+    {
+        var uri = NavManager.Uri;
+        if (uri.EndsWith("/WorkTimeCalc"))
+        {
+            // Redirects to the root of the app
+            NavManager.NavigateTo("/", forceLoad: false);
+        }
+    }
+}
