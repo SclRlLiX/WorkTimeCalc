@@ -1,0 +1,65 @@
+@page "/workend"
+
+<PageTitle>Arbeitsende</PageTitle>
+
+<h1 class="fs-1 mb-4 text-center">Arbeitsende berechnen</h1>
+
+<div class="row">
+    <div class="col-lg">
+        <div class="mb-3">
+            <label for="start" class="form-label">Arbeitsbeginn</label>
+            <input type="time" class="form-control form-select-lg secondary-font text-center" id="start" @bind-value="start" @onfocusout="CalcWorkEnd">
+        </div>
+    </div>
+
+    <div class="col-lg">
+        <div class="mb-3">
+            <label for="pause" class="form-label">Pause (min)</label>
+            <select class="form-select form-select-lg secondary-font text-center" @bind="pause" @onfocusout ="CalcWorkEnd">
+                @for (int i = 0; i < 999; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg">
+        <div class="mb-3">
+            <label for="end" class="form-label">Arbeitszeit (hh:mm)</label>
+            <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="workTime"  @onfocusout="CalcWorkEnd">
+        </div>
+    </div>
+</div>
+
+
+<p class="fs-1 text-center mt-5"> 
+    Arbeitsende: <b>@workEndHour:@workEndMinute</b> Uhr
+</p>
+
+@code {
+
+    public DateTime start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 07, 0, 0);
+    public Int32 pause = 30; 
+    public DateTime workTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
+   
+    public DateTime workEnd;
+
+    public String? workEndHour; 
+    public String? workEndMinute; 
+
+    protected override void OnInitialized()
+    {
+        CalcWorkEnd();
+    }
+
+    private void CalcWorkEnd()
+    {
+        TimeSpan workTimeTimeSpan = workTime.TimeOfDay;
+        workEnd = start.Add(workTimeTimeSpan);
+        workEnd = workEnd.Add(TimeSpan.FromMinutes(pause));
+
+        workEndHour = workEnd.ToString("HH");
+        workEndMinute= workEnd.ToString("mm");
+    }
+}

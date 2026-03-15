@@ -1,0 +1,63 @@
+@page "/workstart"
+
+<PageTitle>Arbeitsbeginn</PageTitle>
+
+<h1 class="fs-1 mb-4 text-center">Arbeitsbeginn berechnen</h1>
+
+<div class="row">
+    <div class="col-lg">
+        <div class="mb-3">
+            <label for="end" class="form-label">Arbeitsende</label>
+            <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="end" @onfocusout="CalcWorkStart">
+        </div>
+    </div>
+
+    <div class="col-lg">
+        <div class="mb-3">
+            <label for="pause" class="form-label">Pause (min)</label>
+            <select class="form-select form-select-lg secondary-font text-center" @bind="pause" @onfocusout ="CalcWorkStart">
+                @for (int i = 0; i < 999; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg">
+        <div class="mb-3">
+            <label for="end" class="form-label">Arbeitszeit (hh:mm)</label>
+            <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="workTime"  @onfocusout="CalcWorkStart">
+        </div>
+    </div>
+</div>
+
+
+<p class="fs-1 text-center mt-5"> 
+    Arbeitsbeginn: <b>@workStartHour:@workStartMinute</b> Uhr
+</p>
+
+@code {
+
+    public DateTime end = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0);
+    public Int32 pause = 30; 
+    public DateTime workTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
+
+    public DateTime workStart;
+    public String? workStartHour; 
+     public String? workStartMinute; 
+
+    protected override void OnInitialized()
+    {
+        CalcWorkStart();
+    }
+
+    private void CalcWorkStart()
+    {
+        workStart = end.Subtract(workTime.TimeOfDay);
+        workStart = workStart.Subtract(TimeSpan.FromMinutes(pause));
+
+        workStartHour = workStart.ToString("HH");
+        workStartMinute = workStart.ToString("mm");
+    }
+}
