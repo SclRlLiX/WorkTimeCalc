@@ -4,9 +4,10 @@
 
 <h1 class="fs-1 mb-4 text-center">Arbeitsbeginn berechnen</h1>
 
-<div class="row">
+<div class="row fs-5">
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-skip-end"></i>
             <label for="end" class="form-label">Arbeitsende</label>
             <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="end" @onfocusout="CalcWorkStart">
         </div>
@@ -14,6 +15,7 @@
 
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-pause"></i>
             <label for="pause" class="form-label">Pause (min)</label>
             <select class="form-select form-select-lg secondary-font text-center" @bind="pause" @onfocusout ="CalcWorkStart">
                 @for (int i = 0; i < 999; i++)
@@ -26,6 +28,7 @@
 
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-clock-history"></i>
             <label for="end" class="form-label">Arbeitszeit (hh:mm)</label>
             <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="workTime"  @onfocusout="CalcWorkStart">
         </div>
@@ -34,7 +37,7 @@
 
 
 <p class="fs-1 text-center mt-5"> 
-    Arbeitsbeginn: <b>@workStartHour:@workStartMinute</b> Uhr
+    Arbeitsbeginn: <span class="fw-bold text-primary-emphasis"> @workStartHour:@workStartMinute</span> Uhr
 </p>
 
 @code {

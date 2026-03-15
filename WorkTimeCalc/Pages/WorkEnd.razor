@@ -4,9 +4,10 @@
 
 <h1 class="fs-1 mb-4 text-center">Arbeitsende berechnen</h1>
 
-<div class="row">
+<div class="row fs-5">
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-skip-start"></i>
             <label for="start" class="form-label">Arbeitsbeginn</label>
             <input type="time" class="form-control form-select-lg secondary-font text-center" id="start" @bind-value="start" @onfocusout="CalcWorkEnd">
         </div>
@@ -14,6 +15,7 @@
 
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-pause"></i>
             <label for="pause" class="form-label">Pause (min)</label>
             <select class="form-select form-select-lg secondary-font text-center" @bind="pause" @onfocusout ="CalcWorkEnd">
                 @for (int i = 0; i < 999; i++)
@@ -26,6 +28,7 @@
 
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-clock-history"></i>
             <label for="end" class="form-label">Arbeitszeit (hh:mm)</label>
             <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="workTime"  @onfocusout="CalcWorkEnd">
         </div>
@@ -34,7 +37,7 @@
 
 
 <p class="fs-1 text-center mt-5"> 
-    Arbeitsende: <b>@workEndHour:@workEndMinute</b> Uhr
+    Arbeitsende: <span class="fw-bold text-primary-emphasis"> @workEndHour:@workEndMinute</span> Uhr
 </p>
 
 @code {

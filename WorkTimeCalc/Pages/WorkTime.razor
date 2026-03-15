@@ -4,9 +4,10 @@
 
 <h1 class="fs-1 mb-4 text-center">Arbeitszeit berechnen</h1>
 
-<div class="row">
+<div class="row fs-5">
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-skip-start"></i>
             <label for="start" class="form-label">Arbeitsbeginn</label>
             <input type="time" class="form-control form-select-lg secondary-font text-center" id="start" @bind-value="start" @onfocusout="CalcWorkTime">
         </div>
@@ -14,6 +15,7 @@
 
     <div class="col-lg">
         <div class="mb-3">
+            <i class="bi bi-pause"></i>
             <label for="pause" class="form-label">Pause (min)</label>
             <select class="form-select form-select-lg secondary-font text-center" @bind="pause" @onfocusout ="CalcWorkTime">
                 @for (int i = 0; i < 999; i++)
@@ -26,6 +28,7 @@
 
     <div class="col-lg">
         <div class="mb-3">
+             <i class="bi bi-skip-end"></i>
             <label for="end" class="form-label">Arbeitsende</label>
             <input type="time" class="form-control form-select-lg secondary-font text-center" id="end" @bind-value="end"  @onfocusout="CalcWorkTime">
         </div>
@@ -33,8 +36,8 @@
 </div>
 
 
-<p class="fs-1 text-center mt-5"> 
-   <b> @workTime.Hours </b> Stunden und <b> @workTime.Minutes </b> Minuten
+<p class="fs-1 text-center mt-5 "> 
+    <span class="fw-bold text-primary-emphasis">@workTime.Hours</span> Stunden und <span class="fw-bold text-primary-emphasis">@workTime.Minutes</span> Minuten
 </p>
 
 @code {
