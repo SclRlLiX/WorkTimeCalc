@@ -16,7 +16,11 @@
 	<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
+
 	<Target Name="FlattenWwwroot" AfterTargets="Publish;FileSystemPublish">
+
+		<Exec Command="powershell -NoProfile -Command &quot;(Get-Content -Path '$(PublishDir)wwwroot\index.html' -Raw).Replace('base href=\&quot;/\&quot;', 'base href=\&quot;/WorkTimeCalc/\&quot;') | Set-Content -Path '$(PublishDir)wwwroot\index.html'&quot;" />
+		
 		<ItemGroup>
 			<WwwrootFiles Include="$(PublishDir)wwwroot\**\*.*" />
 		</ItemGroup>
@@ -26,5 +30,7 @@
 
 		<RemoveDir Directories="$(PublishDir)wwwroot" />
 	</Target>
+
+	
 
 </Project>

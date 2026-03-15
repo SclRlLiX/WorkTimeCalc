@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "nFh7UQ+n",
+  "version": "yEeoi03s",
   "assets": [
     {
       "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
@@ -142,15 +142,15 @@ self.assetsManifest = {
       "url": "_framework/System.Text.RegularExpressions.0z90gmqylm.wasm"
     },
     {
-      "hash": "sha256-iTfFy6q+Ni5eaAMXGMqRFOoH4I38gu4Mzwh2HZKyB0E=",
-      "url": "_framework/WorkTimeCalc.lxlaim01sf.wasm"
+      "hash": "sha256-9zq2H714/eBI9Pw4Hm+6fhHcp1SUknTNUOp8eN7RYY8=",
+      "url": "_framework/WorkTimeCalc.bjkk64g1ca.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-n/rVWJvSwyQHDA0D/+R19ira8XL9Rxh6qg4v2U5VGgg=",
+      "hash": "sha256-gT85ll2P5PZlUL6ENfJOWlxN4YpK8GKuPD3GMOh/eJs=",
       "url": "_framework/dotnet.js"
     },
     {
@@ -202,7 +202,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-tmBh/KPB98IaXlk71aZScobHw5Ad+UbFr7i4y27AJBw=",
+      "hash": "sha256-9mC01OlXwsFOTf4C4seCXax2HkcFjxd8Nzv2ybHoo64=",
       "url": "index.html"
     },
     {
